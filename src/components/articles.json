@@ -1,6 +1,8 @@
 [
- {"id": 3, "title":"hello article", "fulltext":"some text here to fill the body","imageurl":"../img/dog4.jpg"},
- {"id": 4, "title":"another article", "fulltext":"again here is some text here to fill","imageurl":"../img/dog1.jpeg"},
- {"id": 2, "title":"coventry university", "fulltext":"some news about coventry university","imageurl":"../img/dog2.jpeg"},
- {"id": 5, "title":"smart campus", "fulltext":"smart campus is coming to IVE","imageurl":"../img/dog3.jpg"}
+ {"id": 3, "title":"Lisa", "variety": "cat", "gender": "M", "age": "3 months", "info":"some text here to fill the body", "imageurl":"../img/dog4.jpg"},
+ {"id": 4, "title":"Tommy", "variety": "cat", "gender": "M", "age": "3 months", "info":"again here is some text here to fill", "imageurl":"../img/dog1.jpeg"},
+ {"id": 2, "title":"Sally", "variety": "cat", "gender": "M", "age": "3 months", "info":"some news about coventry university", "imageurl":"../img/dog2.jpeg"},
+ {"id": 5, "title":"Innamon", "variety": "cat", "gender": "M", "age": "3 months", "info":"smart campus is coming to IVE", "imageurl":"../img/dog3.jpg"},  
+ {"id": 5, "title":"Innamon", "variety": "cat", "gender": "M", "age": "3 months", "info":"smart campus is coming to IVE", "imageurl":"../img/dog3.jpg"}
+
 ]

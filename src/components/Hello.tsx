@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Hello = (props) => {
-  const greeting = `Hello ${props.name}!`
+  const greeting = `Welcome to ${props.name}!`
   return <h1>{greeting}</h1>
 }
 
