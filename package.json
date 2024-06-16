@@ -19,5 +19,13 @@
     "react-dom": "^18.2.0",
     "typescript": "^4.7.4",
     "vite": "^3.2.10"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@types/node": "^20.14.2",
+    "antd": "^5.18.1",
+    "axios": "^1.7.2",
+    "buffer": "^6.0.3",
+    "react-router-dom": "^6.23.1"
   }
 }
