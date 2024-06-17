@@ -29,6 +29,7 @@ const DetailArticle = () => {
               <p>Gender:<br></br>{article.gender}</p>
               <p>Ages:<br></br>{article.age}</p>
               <p>Other Information:<br></br>{article.info}</p>
+              <p>Location of shelter:<br></br>{article.location}</p>
             </div>
           </div>
           

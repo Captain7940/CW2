@@ -10,7 +10,7 @@ const LoginForm = ()=>{
     return (
         <>
             <Button icon={<UserOutlined />} onClick={()=>{setIsShow(true)}} />
-            <Modal open={isShow} onCancel={()=>{setIsShow(false)}} title="Welcome Blogger" footer={[]}> 
+            <Modal open={isShow} onCancel={()=>{setIsShow(false)}} title="Login" footer={[]}> 
                 <Form>
                     <Form.Item label="Username" 
                     rules={[{required: true, message: 'Missing username'}]}>
@@ -20,7 +20,7 @@ const LoginForm = ()=>{
                     rules={[{required: true, message: 'Missing password'}]}>
                         <Input.Password />
                     </Form.Item>
-                    <Button type="primary" htmlType="submit">Button</Button>
+                    <Button type="primary" htmlType="submit">Login</Button>
                 </Form>
             </Modal>
         </>

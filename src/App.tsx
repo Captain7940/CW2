@@ -7,6 +7,8 @@ import About from './components/About';
 import DetailArticle from './components/DetailArticle';
 import NewArticles from './components/NewArticles';
 import LoginForm from './components/LoginForm';
+import Register from './components/Regsister';
+import Pet from './components/PetsComponent';
 
 const { Header, Content, Footer } = Layout;
 
@@ -20,6 +22,8 @@ export default function App() {
             <Link to="/">Home</Link>
             <Link to="/about">About</Link> 
             <Link to="/newarticle">New</Link>
+            <Link to="/newarticle">New</Link>
+            <Link to="/pet">New</Link>
             <LoginForm />
           </Space>
         </nav>
@@ -30,6 +34,7 @@ export default function App() {
           <Route path="/about" element={<About />}  />
           <Route path="/:aid" element = {<DetailArticle /> } />
           <Route path="/newarticle" element= {<NewArticles />} />
+          <Route path="/pet" element= {<Pet />} />
         </Routes>
       </Content>
       <Footer>
