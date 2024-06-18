@@ -1,5 +1,5 @@
 export const api = {
-  uri:"https://replaceWithYourOwn.repl.co:3000/api/v1"
+  uri:"http://localhost:3001/api/pet"
 }
 
 //5180bb11-29ac-4f58-97b1-2b025e251db8-00-3415vnygwmulx.sisko.replit.dev/

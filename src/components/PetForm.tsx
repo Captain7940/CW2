@@ -31,15 +31,6 @@ const PetForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Check if any of the form fields are empty
-    const isFormValid = Object.values(formData).every((value) => value.trim() !== '');
-
-    if (!isFormValid) {
-      alert('Please fill out all the fields.');
-      return;
-    }
-
     try {
       const response = await fetch('http://localhost:3001/api/pet', {
         method: 'POST',
@@ -59,7 +50,6 @@ const PetForm: React.FC = () => {
       alert(`Failed to submit data. Error: ${error}`);
     }
   };
-
 
 
   return (

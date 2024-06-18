@@ -28,6 +28,17 @@ app.post('/api/pet', async (req, res) => {
   }
 });
 
+app.get('/api/pet', async (req, res) => {
+  try {
+    const query = 'SELECT * FROM pet;';
+    const result = await pool.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

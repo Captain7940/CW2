@@ -40,12 +40,13 @@ import express from 'express';
 import pg from 'pg';
 const { Pool } = pg;
 import cors from 'cors';
+import session from 'express-session';
 
 const app = express();
 app.use(express.json());
 const corsOptions = {
-  origin: ['https://a9c08458-c722-4416-9985-81a94ad8f975-00-27mt5a39kn060.pike.replit.dev/', 'http://localhost:5173/pet', 'http://localhost:80', 'http://localhost:80/pet', 'http://localhost:80/api/pet', 'http://localhost:5173/api/pet'],
-  optionsSuccessStatus: 200
+  origin: ['http://localhost:5173'],
+  credentials: "true",
 };
 
 app.use(cors(corsOptions));
@@ -71,10 +72,34 @@ app.post('/api/pet', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('Server is running');
+app.get('/api/pet', async (req, res) => {
+  try {
+    const query = 
+    'SELECT id, title, variety, gender, age, info, location, imageurl FROM pet;';
+    const result = await pool.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
 });
 
+//Deatil page
+app.get('/api/pet/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const queryResult = await pool.query('SELECT id, title, variety, gender, age, info, location, imageurl FROM pet WHERE id = $1', [id]);
+    if (queryResult.rows.length > 0) {
+      res.json(queryResult.rows[0]);
+    } else {
+      res.status(404).send('Pet not found');
+    }
+  } catch (error) {
+    console.error('Error fetching pet details:', error);
+    res.status(500).send('Server error');
+  }
+});
 
 /*Login
 const express = require('express');

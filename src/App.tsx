@@ -8,7 +8,6 @@ import DetailArticle from './components/DetailArticle';
 import NewArticles from './components/NewArticles';
 import LoginForm from './components/LoginForm';
 import Register from './components/Regsister';
-import Pet from './components/PetsComponent';
 import PetForm from './components/PetForm';
 
 const { Header, Content, Footer } = Layout;
@@ -24,7 +23,6 @@ export default function App() {
             <Link to="/about">About</Link> 
             <Link to="/newarticle">New</Link>
             <Link to="/pet">new pet</Link>
-            <Link to="/pet">New</Link>
             <LoginForm />
           </Space>
         </nav>
@@ -36,8 +34,6 @@ export default function App() {
           <Route path="/:aid" element = {<DetailArticle /> } />
           <Route path="/newarticle" element= {<NewArticles />} />
           <Route path="/pet" element= {<PetForm />} />
-
-          <Route path="/pet" element= {<Pet />} />
         </Routes>
       </Content>
       <Footer>
