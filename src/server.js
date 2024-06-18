@@ -42,21 +42,26 @@ const { Pool } = pg;
 import cors from 'cors';
 
 const app = express();
-app.use(cors());
 app.use(express.json());
+const corsOptions = {
+  origin: ['https://a9c08458-c722-4416-9985-81a94ad8f975-00-27mt5a39kn060.pike.replit.dev/', 'http://localhost:5173/pet', 'http://localhost:80', 'http://localhost:80/pet', 'http://localhost:80/api/pet', 'http://localhost:5173/api/pet'],
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 
 const pool = new Pool({
-  connectionString: 'your-connection-string-here'
+  connectionString: 'postgres://xzkoofob:UXdvl-w8UBW9W6gIqoH4c3oUPtdbMRw6@john.db.elephantsql.com/xzkoofob'
 });
 
 app.post('/api/pet', async (req, res) => {
   const { title, variety, gender, age, info, location, imageurl } = req.body;
   try {
-    const query = `
-      INSERT INTO pet(title, variety, gender, age, info, location, imageurl)
+    const query =
+      `INSERT INTO pet(title, variety, gender, age, info, location, imageurl)
       VALUES($1, $2, $3, $4, $5, $6, $7)
-      RETURNING *;
-    `;
+      RETURNING *;`;
     const values = [title, variety, gender, age, info, location, imageurl];
     const result = await pool.query(query, values);
     res.json(result.rows[0]);
@@ -66,11 +71,52 @@ app.post('/api/pet', async (req, res) => {
   }
 });
 
-app.get('/api/pet', async (req, res) => {
-  res.send('Server is running!');
+app.get('/', (req, res) => {
+  res.send('Server is running');
 });
 
 
+/*Login
+const express = require('express');
+const { Pool } = require('pg');
+const session = require('express-session');
+
+const app = express();
+app.use(express.json());
+app.use(session({
+  // Session configuration options
+}));
+
+// Connect to ElephantSQL database
+const pool = new Pool({
+  connectionString: 'postgres://xzkoofob:UXdvl-w8UBW9W6gIqoH4c3oUPtdbMRw6@john.db.elephantsql.com/xzkoofob'
+});
+
+// Login route
+app.post('/api/pet', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    // Query the database for user with the provided username
+    const userResult = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+    if (userResult.rows.length > 0) {
+      const user = userResult.rows[0];
+      // Compare provided password with stored password
+      if (password === user.password) { // Replace with proper password hashing and comparison
+        // Set user information in session
+        req.session.userId = user.id;
+        res.status(200).send('Login successful');
+      } else {
+        res.status(401).send('Invalid credentials');
+      }
+    } else {
+      res.status(401).send('User not found');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).send('Server error');
+  }
+});
+*/
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

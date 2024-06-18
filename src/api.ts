@@ -3,8 +3,8 @@ import { pool } from './db';
 
 export async function postDataToDatabase(data: any) {
   const query = `
-    INSERT INTO pet(id, title, variety, gender, age, info, location, imageurl)
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+    INSERT INTO pet(title, variety, gender, age, info, location, imageurl)
+    VALUES($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
   `;
   const values = [data.id, data.title, data.variety, data.gender, data.age, data.info, data.location, data.imageurl];

@@ -12,18 +12,18 @@ const pool = new Pool({
 });
 
 app.post('/api/pet', async (req, res) => {
-  const { id, title, variety, gender, age, info, location, imageurl } = req.body;
+  const { title, variety, gender, age, info, location, imageurl } = req.body;
   try {
     const query = `
-      INSERT INTO pet(id, title, variety, gender, age, info, location, imageurl)
-      VALUES($1, $2, $3, $4, $5, $6, $7, $8)
+      INSERT INTO pet(title, variety, gender, age, info, location, imageurl)
+      VALUES($1, $2, $3, $4, $5, $6, $7)
       RETURNING *;
     `;
-    const values = [id, title, variety, gender, age, info, location, imageurl];
+    const values = [title, variety, gender, age, info, location, imageurl];
     const result = await pool.query(query, values);
     res.json(result.rows[0]);
   } catch (err) {
-    console.error(err);
+    console.error('Error object:', err);
     res.status(500).send('Server error');
   }
 });
